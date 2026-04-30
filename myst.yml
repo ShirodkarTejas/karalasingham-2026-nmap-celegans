@@ -8,10 +8,10 @@ project:
   # doi: 10.5281/zenodo.XXXXXXX
   # date: YYYY-MM-DD
   authors:
-  - name: Doe, J.
-    orcid: 0000-0000-0000-0001
+  - name: Karalasingham, S.
+    orcid: 0000-0002-4891-9767
     affiliations:
-    - Department of Geosciences and Natural Resource Management, University of Copenhagen, Denmark
+    - Neuromatch Academy, Neuromatch, Inc.
     roles:
     - Conceptualization
     - Formal analysis
@@ -21,47 +21,55 @@ project:
     - Visualization
     - Writing - original draft
     - Writing - review & editing
-  - name: Sharma, A.J.
-    orcid: 0000-0000-0000-0002
+  - name: Shirodkar, T.P.
+    orcid: 0009-0001-3034-0087
     affiliations:
-    - Department of Earth Sciences, Indian Institute of Technology Bombay, Mumbai, India
+    - Neuromatch Academy, Neuromatch, Inc.
+    roles:
+    - Conceptualization
+    - Formal analysis
+    - Investigation
+    - Methodology
+    - Software
+    - Visualization
+    - Writing - original draft
+    - Writing - review & editing
+  - name: Fathollahi, A.
+    orcid: 0000-0002-4059-6756
+    affiliations:
+    - Neuromatch Academy, Neuromatch, Inc.
     roles:
     - Formal analysis
     - Investigation
+    - Methodology
+    - Software
     - Writing - original draft
     - Writing - review & editing
-  - name: Tanaka, S.
+  - name: Ramaswamy, S.
+    orcid: 0000-0001-6642-7136
     affiliations:
-    - College of Urban and Environmental Sciences, Peking University, Beijing, China
+    - Neural Circuits Laboratory, Faculty of Medical Sciences, Newcastle University, United Kingdom
     roles:
-    - Formal analysis
-    - Writing - original draft
-    - Writing - review & editing
-  - name: Vera Gutierrez, C.
-    affiliations:
-    - Institute of Geology, Mining, and Metallurgy, Universidad Nacional Mayor de San Marcos, Lima, Peru
-    roles:
-    - Formal analysis
-    - Writing - original draft
-    - Writing - review & editing
-  - name: Ndlovu, T.
-    affiliations:
-    - Marine Research and Development, Oceanic Dynamics Ltd., Cape Town, South Africa
-    roles:
-    - Formal analysis
+    - Conceptualization
+    - Methodology
+    - Supervision
     - Writing - review & editing
 
   toc:
   - file: index.md
 
-  id: isp-micropublication-template
-  title: This is the title of our awesome micropublication
+  id: isp-micropublication-nmap-celegans
+  title: "Neuro-Modulating Architecture Priors (NMAP) for Context-Dependent Reconfiguration of Locomotory Circuits in Caenorhabditis elegans"
+  short_title: "NMAP for C. elegans Locomotory Circuits"
   keywords:
-  - keyword1
-  - keyword2
-  - keyword3
-  - keyword4
-  github: https://github.com/impact-scholars/isp-micropublication-template
+  - neuromodulation
+  - C. elegans
+  - locomotion
+  - neural circuit architectural priors
+  - reinforcement learning
+  - gait switching
+  - central pattern generator
+  github: https://github.com/ShirodkarTejas/context-crawlers-micropublication
   bibliography:
   - bib.bib
   # downloads:
