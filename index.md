@@ -24,36 +24,41 @@ Biological locomotion adapts across mechanical contexts through neuromodulation.
 
 NMAP produces measurable bistable gait switching that matches *C. elegans* kinematics; NCAP, under identical curriculum and reward, fails to differentiate motor output by substrate across every diagnostic.
 
-**Amplitude–frequency separation (@figure-main A,B).** NMAP is the only model showing two separated kinematic clusters with a bistable gap at 1.1–1.5 Hz. NCAP under the same progressive curriculum produces a continuous mediocre scatter with no distinct separation between swim and crawl regimes.
+**Amplitude–frequency separation (@figure-main A,B).** These scatter plots characterise locomotion kinematics by plotting joint amplitude (rad) against undulation frequency (Hz) across all locomotion bouts; in *C. elegans*, swim and crawl gaits occupy distinct, non-overlapping regions of this space. NCAP on the progressive curriculum (A) produces a broad, diffuse cloud with no coherent clustering — its fixed CPG collapses under mixed-terrain pressure into states committed to neither gait. NMAP (B) is the only model producing two clearly separated clusters — a high-amplitude, low-frequency group (crawl) and a lower-amplitude group (swim) — with a measurable bistable gap at 1.1–1.5 Hz, the discrete two-state structure characteristic of real *C. elegans*.
 
-**Substrate-specific forward speed (@figure-main C,D).** NMAP maintains a near-constant water–land speed gap of $\sim$0.007–0.020 m/s reflecting true substrate specialisation. NCAP's gap converges toward zero through mediocrity, with both substrates approaching the same compromise speed of $\sim$0.175 m/s.
+**Substrate-specific forward speed (@figure-main C,D).** Mean forward speed is measured separately on water (blue) and land (orange) across the training phases. NCAP (C) lets water and land speeds converge toward a shared compromise by Phase 3, with heavily overlapping error bars — a single intermediate gait adequate on both substrates but excelling at neither. NMAP (D) maintains a persistent, directional water–land gap ($\sim$0.007–0.020 m/s, water faster), reflecting genuine dual specialisation rather than compromise.
 
-**Body-wave morphology (@figure-main E,F).** NMAP produces fast short-period waves in water ($\sim$20–25 steps) and slow long-period waves on land ($\sim$50–60 steps) across all curriculum phases. NCAP produces identical swim-like wave morphology on water and land — zero gait adaptation.
+**Body-wave morphology (@figure-main E,F).** Kymographs plot joint position (anterior to posterior, vertical) against time (horizontal); colour encodes the direction of joint deflection, and diagonal stripe spacing encodes wave speed and period. NCAP (E) produces near-identical, swim-like stripe patterns on water and land across every phase — no terrain adaptation. NMAP (F) produces fast, tightly spaced diagonals in water and visibly slower, broader bands on land, with the contrast sharpening from Phase 1 to Phase 3 — the most direct visual evidence of genuine gait switching.
 
-**CPG period commitment** (described here, not figured): NCAP on a single substrate locks to $\sim$59 steps; under the progressive curriculum it collapses to a broad unimodal distribution shaped by mixed terrain. NMAP shows four discrete period clusters, one per curriculum phase, reflecting graded modulation that tracks curriculum complexity.
+**CPG period commitment** (described here, not figured). Swim and crawl require different body-wave frequencies: fast short-period oscillations in low-viscosity water, slow long-period oscillations on high-viscosity land. NCAP on a single substrate locks near its nominal 60-step period (mean 58.9 steps); on the progressive curriculum it collapses to a broad unimodal distribution (mean 19.8 steps) with no discrete structure. NMAP instead shows discrete clusters spanning short ($\sim$10–15 step, swim) and long ($\sim$55–65 step, crawl) periods — the CPG commits to substrate-appropriate frequencies rather than settling on an intermediate.
 
 ## Ablations
 
 We isolated the contribution of each architectural component with three ablations of NMAP under identical training conditions. **Removing neuromodulation** (gain = 1, bias = 0) contracts the land-crawl wave period toward swim frequency across all phases; switching degrades but is not eliminated, because the HRL manager retains residual modulation capacity. **Disabling the bistability regulariser** allows context vectors to adopt continuous intermediate values rather than committing to discrete attractors; discrete gait commitment collapses, the reward profile reverts to an NCAP-like pattern, and water performance drops by 16 % — making this the single most critical component. **Removing anisotropic drag** reduces substrate contrast to viscosity alone; switching persists via viscosity contrast, but the crawl cluster over-amplifies, degrading biological correspondence without eliminating gait differentiation.
 
-```{figure} figure.png
+```{figure} figure.svg
 :name: figure-main
-:alt: Six-panel figure contrasting NCAP and NMAP on the progressive water-land curriculum.
+:alt: Six-panel vector figure contrasting NCAP and NMAP on the progressive water-land curriculum.
 
+NCAP (left of each pair) versus NMAP (right) on the progressive water–land curriculum. Throughout, blue denotes the water substrate and orange the land substrate.
 \
-**A.** NCAP amplitude–frequency under the progressive curriculum: continuous scatter, no swim/crawl separation.
+**A.** NCAP amplitude–frequency (joint amplitude vs undulation frequency): a broad, diffuse scatter with no swim/crawl separation.
 \
-**B.** NMAP amplitude–frequency: two distinct clusters with a bistable gap at 1.1–1.5 Hz (solid ellipses mark the swim and crawl regimes).
+**B.** NMAP amplitude–frequency: two separated clusters — high-amplitude, low-frequency (crawl) and lower-amplitude (swim) — with a bistable gap at $\sim$1.1–1.5 Hz.
 \
-**C.** NCAP forward speed by curriculum phase: water–land gap collapses toward zero as phases progress.
+**C.** NCAP forward speed by curriculum phase (blue = water, orange = land): the water–land gap collapses toward a shared compromise.
 \
-**D.** NMAP forward speed by phase: a stable substrate-specific speed gap is preserved across the curriculum.
+**D.** NMAP forward speed by phase: a stable, directional water–land speed gap is preserved across the curriculum.
 \
-**E.** NCAP kymographs (final phase, water and land substrate): identical swim-like body waves on both substrates.
+**E.** NCAP kymographs across phases (blue = water column, orange = land column): near-identical swim-like body waves on both substrates.
 \
-**F.** NMAP kymographs (final phase, water and land substrate): fast short-period swim waves in water; slow long-period crawl waves on land.
+**F.** NMAP kymographs across phases: fast short-period swim waves in water; slow long-period crawl waves on land.
 ```
 
 ## Conclusion
 
 NMAP demonstrates that a learned dopamine/serotonin-analogue modulatory layer, coupled with a hierarchical manager that infers substrate from proprioceptive phase-lag alone, is sufficient to produce bistable swim–crawl transitions that quantitatively match *C. elegans* kinematics. NCAP, despite an identical CPG and curriculum, cannot. Ablations identify the bistability regulariser as the single most critical component, with neuromodulation and anisotropic drag providing complementary contributions to switching precision. **Neuromodulatory priors are a necessary architectural extension beyond hardwired connectivity for context-adaptive neuro-inspired AI.**
+
+## Code availability
+
+The code used in this study is publicly available at <https://github.com/ShirodkarTejas/nma_nai_on> and <https://github.com/sagthi/NMAP>.
